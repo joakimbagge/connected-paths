@@ -1,8 +1,8 @@
 package main
 
 import (
-	paths2 "connectedpaths/paths"
 	"fmt"
+	paths2 "github.com/joakimbagge/connected-paths/paths"
 )
 
 func main() {
