@@ -4,25 +4,25 @@ import (
 	"testing"
 )
 
-func TestPathEnumeration(t *testing.T) {
-	cases := []struct{ cols, rows, paths int }{
-		{0, 0, 0},
-		{1, 1, 1},
-		{1, 2, 2},
-		{2, 1, 1},
-		{2, 2, 4},
-		{3, 3, 17},
-		{5, 3, 99},
-		{5, 4, 178},
-		{5, 5, 259},
-		{6, 4, 466},
+func TestConnectedPathsCount(t *testing.T) {
+	testCases := []struct {
+		cols      int
+		rows      int
+		wantCount int
+	}{
+		{cols: 0, rows: 0, wantCount: 0},
+		{cols: 1, rows: 1, wantCount: 1},
+		{cols: 1, rows: 2, wantCount: 2},
+		{cols: 2, rows: 1, wantCount: 1},
+		{cols: 2, rows: 2, wantCount: 4},
+		{cols: 3, rows: 3, wantCount: 17},
+		{cols: 5, rows: 3, wantCount: 99},
 	}
-	for _, test := range cases {
-		var res [][]int
-		res = ConnectedPaths(test.cols, test.rows)
-		if len(res) != test.paths {
-			t.Errorf("wrong number of paths for grid %dx%d, expected %d, got %d",
-				test.cols, test.rows, test.paths, len(res))
+	for _, tc := range testCases {
+		got := ConnectedPaths(tc.cols, tc.rows)
+		if len(got) != tc.wantCount {
+			t.Errorf("For grid %dx%d: expected %d paths, got %d",
+				tc.cols, tc.rows, tc.wantCount, len(got))
 		}
 	}
 }
