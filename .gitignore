@@ -1,0 +1,11 @@
+# Go build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# IDE/editor config
+.idea/
+
